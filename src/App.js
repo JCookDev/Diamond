@@ -1,12 +1,13 @@
-import './App.css';
+//import './App.css';
 import { Switch, Route, Link } from 'react-router-dom';
 import { Layout, Typography, Space } from 'antd';
+import { Navbar } from './Components';
 
 const App = () =>{
   return (
     <div className="app">
       <div className= "navbar">
-
+        <Navbar />
       </div>
       <div className="main">
 
