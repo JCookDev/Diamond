@@ -1,18 +1,25 @@
-import React from 'react';
-import './App.css';
-import { Switch, Route, Link } from 'react-router-dom';
-import { Layout, Typography, Space } from 'antd';
-import { Homepage, Navbar, Exchanges, Cryptocurrencies, CryptoDetails, News } from './Components';
+import React from "react";
+import "./App.css";
+import { Switch, Route, Link } from "react-router-dom";
+import { Layout, Typography, Space } from "antd";
+import {
+  Homepage,
+  Navbar,
+  Exchanges,
+  Cryptocurrencies,
+  CryptoDetails,
+  News,
+} from "./Components";
 
-const App = () =>{
+const App = () => {
   return (
     <div className="app">
-      <div className= "navbar">
+      <div className="navbar">
         <Navbar />
       </div>
       <div className="main">
         <Layout>
-          <div className='routes'>
+          <div className="routes">
             <Switch>
               <Route exact path="/">
                 <Homepage />
@@ -32,12 +39,22 @@ const App = () =>{
             </Switch>
           </div>
         </Layout>
-      </div>
-      <div className="footer">
-
+        <div className="footer">
+          <Typography.Title
+            level={5}
+            style={{ color: "white", textAlign: "center" }}
+          >
+            Diamond <br />
+            All rights reserved
+          </Typography.Title>
+          <Space>
+            <Link to="/">Home</Link>
+            <Link to="/news">News</Link>
+          </Space>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;

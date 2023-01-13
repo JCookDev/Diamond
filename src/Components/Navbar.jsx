@@ -25,7 +25,8 @@ const items = [
         key: 'news',
         icon: <BulbOutlined />,
     },
-]    
+] 
+   
 const Navbar = () => {
   return (
     <div className="nav-container">
