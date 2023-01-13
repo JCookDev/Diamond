@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
 import icon from '../images/diamond.png'
 
-/* antd's "Menu Component" cannot contain children. 
-The items array is a prop/parameter of the Menu Component, which allows us to attach react-router links to the menu items.
-*/
 const items = [
     {
       label: <Link to="/">Home</Link>,
@@ -39,7 +36,7 @@ const Navbar = () => {
             </Typography.Title>
             {/*<Button></Button>*/}
         </div>
-        <Menu defaultSelectedKeys={['1']} theme="dark" items={items} /> {/* Highlight the "Home" item link by default and use the "dark theme" in the Menu Component and it's items */}
+        <Menu defaultSelectedKeys={['home']} theme="dark" items={items}/> {/* Use the "dark theme" for the Menu Component and it's children components*/}
     </div>
   )
 }
