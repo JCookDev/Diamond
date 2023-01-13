@@ -6,9 +6,9 @@ import icon from '../images/diamond.png'
 
 const items = [
     {
-      label: <Link to="/">Home</Link>,
-      key: 'home',
-      icon: <HomeOutlined />,
+        label: <Link to="/">Home</Link>,
+        key: 'home',
+        icon: <HomeOutlined />,
     },
     {
         label: <Link to="/cryptocurrencies">Cryptocurrencies</Link>,
@@ -36,7 +36,7 @@ const Navbar = () => {
             </Typography.Title>
             {/*<Button></Button>*/}
         </div>
-        <Menu defaultSelectedKeys={['home']} theme="dark" items={items}/> {/* Use the "dark theme" for the Menu Component and it's children components*/}
+        <Menu theme="dark" items={items}/> {/* Use the "dark theme" for the Menu Component and it's children components*/}
     </div>
   )
 }
