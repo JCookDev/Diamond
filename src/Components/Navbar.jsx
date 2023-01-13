@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
 import icon from '../images/diamond.png'
 
+
+/* antd's "Menu Component" cannot contain children. 
+The items array gets passed down as a prop/parameter to the Menu Component. This allows us to attach react-router links to the menu items.
+*/
 const items = [
     {
         label: <Link to="/">Home</Link>,
@@ -26,7 +30,7 @@ const items = [
         icon: <BulbOutlined />,
     },
 ] 
-   
+
 const Navbar = () => {
   return (
     <div className="nav-container">
