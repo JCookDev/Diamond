@@ -10,6 +10,8 @@ const { Title } = Typography;
 const Homepage = () => {
 
   const { data, isFetching } = useGetCryptosQuery(); // useGetCryptosQuery- Custom hook that is used to fetch the Global Stats data.
+  //console.log(data);
+
   const globalStats = data?.data?.stats; // Access the stats key/values in the data object. Use globalStats to represent the stats data
   if(isFetching) return "Loading..."
 
