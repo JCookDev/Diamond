@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+
+import App from './App';
+import { Provider } from 'react-redux';
+import store from "./app/store"; // store - A variable that is needed for the Provider passed in on line 8
 import 'antd/dist/reset.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
-      <App />
+      <Provider store={store}> {/* Give all components access to the store variable  */}
+        <App />
+      </Provider>
     </BrowserRouter>
 );
 
