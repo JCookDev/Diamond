@@ -5,9 +5,11 @@ import { Card, Row, Col, Input } from 'antd';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
 
-const Cryptocurrencies = () => {
+const Cryptocurrencies = ({ simplified }) => {
+  // Set the value of count to 10 if simplified, else set the value to 100(simplified will determine the amount of cards to display)
+  const count = simplified ? 10 : 50;
   // Destructure the data coming from the API and name it cryptosList
-  const { data: cryptosList, isFetching } = useGetCryptosQuery();
+  const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   // Get the cryptocurrencies in the cryptosList object
   const [cryptos, setCryptos] = useState(cryptosList?.data?.coins);
 

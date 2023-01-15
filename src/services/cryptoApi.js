@@ -29,7 +29,7 @@ export const cryptoApi = createApi({
   }),
   // The code below builds out all of the Coin Ranking API endpoints we're interested in calling.
   endpoints: (builder) => ({
-    getCryptos: builder.query({ query: () => "/coins" }),
+    getCryptos: builder.query({ query: (count) => `/coins?limit=${count}` }),
   }),
 });
 
