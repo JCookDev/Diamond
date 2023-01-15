@@ -26,17 +26,6 @@ fetch('https://bing-news-search1.p.rapidapi.com/news?safeSearch=Off&textFormat=R
         baseQuery: fetchBaseQuery({
           baseUrl: "https://bing-news-search1.p.rapidapi.com",
           headers: cryptoNewsHeaders
-          //prepareHeaders - Callback function that sets the required headers for every API request.
-          /*prepareHeaders: (headers) => {
-            headers.set(
-              "X-RapidAPI-Key",
-              "84c143d4f2msh3dc3a176c01524ep11d3c9jsnf1dacb849802",
-              "X-BingApis-SDK",
-              "true"
-            );
-      
-            return headers;
-          },*/
         }),
         // The code below builds out all of the Bing News Search API endpoints we're interested in calling.
         endpoints: (builder) => ({
