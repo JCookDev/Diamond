@@ -7,7 +7,7 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
 
 const Cryptocurrencies = ({ simplified }) => {
   // Set the value of count to 10 if simplified, else set the value to 100(simplified will determine the amount of cards to display)
-  const count = simplified ? 10 : 50;
+  const count = simplified ? 10 : 100;
   // Destructure the data coming from the API and name it cryptosList
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   // Get the cryptocurrencies in the cryptosList object
@@ -15,10 +15,12 @@ const Cryptocurrencies = ({ simplified }) => {
 
   console.log(cryptos);
 
+  if(isFetching) return "Loading...";
+
   return (
     <>
       <Row gutter={[32, 32]} className="crypto-card-container">
-        {cryptos.map((currency) => (
+        {cryptos?.map((currency) => (
           <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.uuid}>
             <Link to={`/crypto/${currency.uuid}`}>
               <Card
