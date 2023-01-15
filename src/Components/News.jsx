@@ -1,12 +1,13 @@
-import { Card, Col, Row } from 'antd';
+import { Avatar, Card, Col, Row } from 'antd';
 import Typography from 'antd/es/typography/Typography';
+import moment from 'moment';
 import React from 'react';
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
 
 const { Text, Title } = Typography;
 //const{ Option } = Select;
 
-const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News'
+const demoImage = 'http://coinrevolution.com/wp-content/uploads/2020/06/cryptonews.jpg';
 
 const News = ({ simplified }) => {
   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', count: simplified ? 6 : 12 });
@@ -30,6 +31,12 @@ const News = ({ simplified }) => {
                   : news.description
                 }
               </p>
+              <div className="provider-container">
+                <div>
+                  <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="news provider logo"/>
+                  <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                </div>
+              </div>
             </a>
           </Card>
         </Col>
