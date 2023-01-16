@@ -1,22 +1,41 @@
-import { Avatar, Card, Col, Row } from 'antd';
+import React, { useState } from 'react';
+import { Avatar, Card, Col, Row, Select } from 'antd';
 import Typography from 'antd/es/typography/Typography';
 import moment from 'moment';
-import React from 'react';
+
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
+import { useGetCryptosQuery } from '../services/cryptoApi';
 
 const { Text, Title } = Typography;
-//const{ Option } = Select;
+const{ Option } = Select;
 
 const demoImage = 'http://coinrevolution.com/wp-content/uploads/2020/06/cryptonews.jpg';
 
 const News = ({ simplified }) => {
-  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', count: simplified ? 6 : 12 });
+  const [newsCategory, setNewscategory] = useState('Cryptocurrency');
+  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
+  const { data } = useGetCryptosQuery(100);
 
   if(!cryptoNews?.value) return 'Loading...';
   //console.log(cryptoNews)
 
   return (
     <Row gutter={[ 24, 24 ]}>
+      {!simplified && (
+        <Col span={24}>
+          {/* Only show articles that relate to the selected crypto*/}
+          <Select 
+            showSearch className='select-news' 
+            placeholder='Select a Crypto' 
+            optionFilterProp='children' 
+            onChange={(value) => setNewscategory(value)} 
+            filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+          >
+            <Option value='Cryptocurrency'>All</Option>
+            {data?.data?.coins.map((coin) => <Option key={coin.uuid} value={coin.name}>{coin.name}</Option>)}
+          </Select>
+        </Col>
+      )}
       {cryptoNews.value.map((news, i) =>(
         <Col xs={24} sm={12} lg={8} key={i}>
           <Card hoverable className='news-card'>
