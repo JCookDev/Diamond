@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Menu, Typography, Avatar } from 'antd'; // imports react components from antd llibrary
 import { Link } from 'react-router-dom';
-import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
+import { HomeOutlined, BulbOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
 import icon from '../images/diamond.png'
 
 
@@ -27,6 +27,26 @@ const items = [
 ] 
 
 const Navbar = () => {
+    const [activeMenu, setActiveMenu] = useState(true);
+    const [screenSize, setScreenSize] = useState(null);
+
+    useEffect(() => {
+        const handleResize = () => setScreenSize(window.innerWidth);
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        return() => window.removeEventListener('resize', handleResize)
+    }, [screenSize]);
+
+    useEffect(() => {
+        if(screenSize <= 800) {
+            setActiveMenu(false);
+        } else {
+            setActiveMenu(true);
+        }
+    }, [screenSize])
+
   return (
     <div className="nav-container">
         <div className="logo-container">
@@ -34,9 +54,13 @@ const Navbar = () => {
             <Typography.Title level={2} className="logo"> {/* This line sets the "Diamond Link" on line 14 as an h2*/}
                 <Link to="/">Diamond</Link>
             </Typography.Title>
-            {/*<Button></Button>*/}
+            <Button className="menu-control-container" onClick={() => setActiveMenu(!activeMenu)}>
+                <MenuOutlined />
+            </Button>
         </div>
-        <Menu theme="dark" items={items}/> {/* Use the "dark theme" for the Menu Component and it's children components*/}
+        {activeMenu && (
+            <Menu theme="dark" items={items}/> 
+        )}
     </div>
   )
 }
