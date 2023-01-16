@@ -29,8 +29,7 @@ a:hover{
 
 .main{
   flex: 0.8;
-  width: 100%;
-  
+  width: 100%; 
 }
 
 .routes{
@@ -91,4 +90,106 @@ a:hover{
 
 .crypto-card .crypto-image{
   width:35px;
+}
+
+.search-crypto{
+  margin: 20px auto 30px auto;
+  width: 250px;
+}
+
+.select-news{
+  width: 180px;
+}
+
+.news-card{
+  min-height: 300px !important;
+}
+
+.news-image-container{
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.news-title{
+width: 70%;
+}
+
+.news-image-container .img{
+  width:100px;
+  height:100px;
+}
+
+.news-card p{
+  color: black;
+  margin: 10px 0px !important;
+}
+
+.provider-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.provider-name{
+  margin-left: 10px;
+}
+
+@media screen and (max-width:1300px){
+  .main{
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width:1170px){
+  .main{
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width:1000px){
+  .main{
+    margin-left: 100px;
+  }
+}
+
+@media screen and (max-width:800px){
+  .app{
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .navbar{
+    flex: 1;
+  }
+
+  .main{
+    flex: 1;
+    margin-top: 90px;
+    margin-left: 0px;
+    margin-right: 10px;
+  }
+
+  .nav-container{
+    height: 8vh;
+    position:fixed;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--bgSecondary);
+  }
+
+  .ant-menu{
+    position: absolute;
+    right: 0px;
+  }
+  .home-title{
+    font-size: 1.4rem !important;
+  }
+  .show-more{
+    font-size: 1.3rem !important;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .heading{
+    margin-top: 20px;
+  }
 }
