@@ -20,11 +20,6 @@ const items = [
         icon: <FundOutlined />,
     },
     {
-        label: <Link to="/exchanges">Exchanges</Link>,
-        key: 'exchanges',
-        icon: <MoneyCollectOutlined />,
-    },
-    {
         label: <Link to="/news">News</Link>,
         key: 'news',
         icon: <BulbOutlined />,
