@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Avatar, Card, Col, Row, Select } from 'antd';
+import { Avatar, Card, Col, Row, Select, Result } from 'antd';
 import Typography from 'antd/es/typography/Typography';
 import moment from 'moment';
 
@@ -13,11 +13,19 @@ const demoImage = 'http://coinrevolution.com/wp-content/uploads/2020/06/cryptone
 
 const News = ({ simplified }) => {
   const [newsCategory, setNewscategory] = useState('Cryptocurrency');
-  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
+  const { data: cryptoNews, isError } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
   const { data } = useGetCryptosQuery(100);
 
   if(!cryptoNews?.value) return 'Loading...';
   //console.log(cryptoNews)
+
+  if(isError) return (
+    <Result
+      status="500"
+      title="500"
+      subTitle="Sorry, our server is experiencing issues. Try again later."
+    />
+  );
 
   return (
     <Row gutter={[ 24, 24 ]}>
